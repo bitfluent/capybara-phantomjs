@@ -1,0 +1,42 @@
+= capybara-phantomjs
+
+* http://github.com/bitfluent/capybara-phantomjs
+
+== Description:
+
+capybara-phantomjs is a {Capybara}[http://github.com/jnicklas/capybara] driver for PhantomJS. The goal is to have a drive a real headless webkit-based browser.
+
+NOTE: This gem does not yet pass all specs (5 out of 20 failures on driver spec, 194 of 415 failures on session spec). I need more things from PhantomJS (which is written in Qt and C++) than I know how like getting status code, HTTP headers and getting a handle on a specific element on a page (to fill out inputs and such).
+
+== Development:
+
+* Source hosted at {GitHub}[http://github.com/bitfluent/capybara-phantomjs].
+* Report issues on {GitHub Issues}[http://github.com/bitfluent/capybara-phantomjs/issues]
+
+Other things you'll need:
+
+* Node.js to run the Socket.IO service and HTTP interface to PhantomJS
+* PhantomJS as of {8ed9dc1}[https://github.com/ariya/phantomjs/commit/8ed9dc1c44be68b0a49d42dc4dbedba3f45a2c44]. This is an older revision but is needed for the now-temporarily-removed loadJS method. {Build instructions}[http://code.google.com/p/phantomjs/wiki/BuildInstructions] are on the PhantomJS site. Copy the phantomjs binary from the app bundle it builds into your PATH.
+
+== Using with Capybara
+
+See the Capybara docs. Use the symbol :phantomjs for the driver/default_driver as appropriate.
+
+If you are using cucumber, you might add the following lines to your features/support/env.rb
+
+  require 'capybara/phantomjs'
+  Capybara.javascript_driver = :phantomjs
+
+== Acknowledgements
+
+* {PhantomJS}[https://phantomjs.org] for providing a cross-platform headless webkit browser with a JS interface
+* {Capybara}[http://github.com/jnicklas/capybara] for the amazing flexibility and test suite
+* {capybara-zombie}[https://github.com/plataformatec/capybara-zombie] which was used as basis to create this gem
+* {Socket.IO}[https://github.com/LearnBoost/Socket.IO-node] for providing a way to instruct PhantomJS from a Ruby process over a socket
+
+== License
+
+See MIT License.
+
+Copyright (c) 2011 Bitfluent (bitfluent.com)
+
